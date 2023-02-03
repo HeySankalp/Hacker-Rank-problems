@@ -9,7 +9,7 @@ function getTotalX(a, b) {
     let count = 0;
     let min_a = Math.min(...a);
     let max_b = Math.max(...b);
-    for (let i = min_a; i<max_b; i+=min_a){
+    for (let i = min_a; i<=max_b; i+=min_a){
         if(b.every((item)=> item%i===0)){
             if(a.every((item)=> i%item===0)){
                 count+=1;
