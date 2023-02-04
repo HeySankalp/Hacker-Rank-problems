@@ -22,6 +22,7 @@ function getTotalX(a, b) {
 
 // Q-:  Maria plays college basketball and wants to go pro. Each season she maintains a record of her play. She tabulates the number of times she breaks her season record for most points and least points in a game. Points scored in the first game establish her record for the season, and she begins counting from there.
 
+// sollution 1
 function breakingRecords(scores) {
     let lowestScore = scores[0];
     let highestScore = scores[0];
