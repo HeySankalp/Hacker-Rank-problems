@@ -42,3 +42,43 @@ function breakingRecords(scores) {
     }
     return [breakHighest, breakLowest]
 }
+
+
+//Q -:    Two children, Lily and Ron, want to share a chocolate bar. Each of the squares has an integer on it.
+
+// Lily decides to share a contiguous segment of the bar selected such that:
+
+// The length of the segment matches Ron's birth month, and,
+// The sum of the integers on the squares is equal to his birth day.
+// Determine how many ways she can divide the chocolate.
+
+function birthday(s, d, m) {
+    let start = 0;
+    let end = m;
+    let subarray = [];
+    let noOfSegments = 0;
+    
+    if(!s.length || s.length < m){
+        return 0;
+    }
+
+    if(s.length === m) {
+        if(s.reduce((sum, currentValue) => sum + currentValue) === d){
+            return 1;
+        }
+        return 0;
+    }
+    
+    while(end <= s.length) {
+        subarray = [];
+        for(let i = start; i < end; i++) {
+            subarray.push(s[i]);
+        }
+        if(subarray.reduce((sum, currentValue) => sum + currentValue) === d) {
+            noOfSegments++;
+        }
+        start++;
+        end++
+    }
+    return noOfSegments;
+}
