@@ -57,24 +57,24 @@ function birthday(s, d, m) {
     let end = m;
     let subarray = [];
     let noOfSegments = 0;
-    
-    if(!s.length || s.length < m){
+
+    if (!s.length || s.length < m) {
         return 0;
     }
 
-    if(s.length === m) {
-        if(s.reduce((sum, currentValue) => sum + currentValue) === d){
+    if (s.length === m) {
+        if (s.reduce((sum, currentValue) => sum + currentValue) === d) {
             return 1;
         }
         return 0;
     }
-    
-    while(end <= s.length) {
+
+    while (end <= s.length) {
         subarray = [];
-        for(let i = start; i < end; i++) {
+        for (let i = start; i < end; i++) {
             subarray.push(s[i]);
         }
-        if(subarray.reduce((sum, currentValue) => sum + currentValue) === d) {
+        if (subarray.reduce((sum, currentValue) => sum + currentValue) === d) {
             noOfSegments++;
         }
         start++;
@@ -84,16 +84,38 @@ function birthday(s, d, m) {
 }
 
 
-//Q:-  Given an array of integers and a positive integer k , determine the number of (i,j)  pairs where  i<j and  ar[i] + ar[j]  is divisible by k .
+//Q:-  Given an array of integers and a positive integer k , determine the number
+//  of (i,j)  pairs where  i<j and  ar[i] + ar[j]  is divisible by k .
 
 function divisibleSumPairs(n, k, ar) {
     let pairCount = 0
-    for(let i= 0; i<n-1; i++){
-        for(let j=i+1; j<n; j++){
-            if((ar[i]+ar[j])%k===0){
-                pairCount+=1;
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = i + 1; j < n; j++) {
+            if ((ar[i] + ar[j]) % k === 0) {
+                pairCount += 1;
             }
         }
     }
     return pairCount;
+}
+
+
+// Q:- Given an array of bird sightings where every element represents a bird type id, 
+// determine the id of the most frequently sighted type. If more than 1 type has been
+//  spotted that maximum amount, return the smallest of their ids.
+
+function migratoryBirds(arr) {
+    let max = [];
+    let temp = [];
+    const sorted = arr.sort((a, b) => a - b);
+    for (let i = 0; i < sorted.length; i++) {
+        temp.push(sorted[i]);
+        if (sorted[i] !== sorted[i + 1]) {
+            if (temp.length > max.length) {
+                max = [...temp];
+            }
+            temp = [];
+        }
+    }
+    return max[0];
 }
