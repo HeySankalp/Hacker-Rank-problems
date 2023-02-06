@@ -119,3 +119,25 @@ function migratoryBirds(arr) {
     }
     return max[0];
 }
+
+// Q:- Complete the dayOfProgrammer function in the editor below. It should return a string representing the date of the 256th day of the year given.
+
+
+function dayOfProgrammer(year) {
+    if (year < 1918) {
+        if (year % 4 === 0) {
+            return "12.09." + year
+        } else {
+            return "13.09." + year
+        }
+    } else if (year > 1918) {
+        if (year % 4 === 0 && (year % 400 === 0 || year % 100 !== 0)) {
+            return "12.09." + year
+        } else {
+            return "13.09." + year
+        }
+    } else {
+        return "29.09." + year
+    }
+
+}
