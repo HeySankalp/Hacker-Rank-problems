@@ -122,7 +122,6 @@ function migratoryBirds(arr) {
 
 // Q:- Complete the dayOfProgrammer function in the editor below. It should return a string representing the date of the 256th day of the year given.
 
-
 function dayOfProgrammer(year) {
     if (year < 1918) {
         if (year % 4 === 0) {
@@ -140,4 +139,20 @@ function dayOfProgrammer(year) {
         return "29.09." + year
     }
 
+}
+
+
+// Q :- Complete the bonAppetit function in the editor below.It should print Bon Appetit if the bill 
+// is fairly split.Otherwise, it should print the integer amount of money that Brian owes Anna.
+
+
+function split(bill, k, b) {
+    let remove = bill[k]
+    let annaToPay = (bill.reduce((sum, currentValue) => sum + currentValue) - remove) / 2;
+    if (b > annaToPay) {
+        console.log(b - annaToPay);
+    }
+    if (b === annaToPay) {
+        console.log('Bon Appetit')
+    }
 }
