@@ -156,3 +156,24 @@ function split(bill, k, b) {
         console.log('Bon Appetit')
     }
 }
+
+
+// Q:- There is a large pile of socks that must be paired by color. Given an array of integers representing
+//  the color of each sock, determine how many pairs of socks with matching colors there are.
+
+function sockMerchant(n, ar) {
+    let count = 0;
+    let tempAr = [];
+    let looped = []
+    for (let i = 0; i < n; i++) {
+        if (looped.includes(ar[i])) {
+            continue;
+        } else {
+            looped.push(ar[i]);
+            tempAr = ar.filter((ele) => ele === ar[i])
+            count += Math.floor(tempAr.length / 2);
+            tempAr = [];
+        }
+    }
+    return count;
+}
