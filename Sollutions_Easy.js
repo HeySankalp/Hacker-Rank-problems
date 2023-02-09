@@ -177,3 +177,19 @@ function sockMerchant(n, ar) {
     }
     return count;
 }
+
+
+
+//Q:- Given n and p, find and print the minimum number of pages that must be turned in order to arrive at page p .
+
+function pageCount(n, p) {
+    let pageTurn = 0;
+    if (n - p <= p - 1) {
+        pageTurn = n % 2 == 0
+            ? Math.ceil((n - p) / 2)
+            : Math.floor((n - p) / 2)
+    } else {
+        pageTurn = Math.floor(p / 2);
+    }
+    return pageTurn;
+}
