@@ -193,3 +193,23 @@ function pageCount(n, p) {
     }
     return pageTurn;
 }
+
+
+//Q:- Given the sequence of up and down steps during a hike, find and print the number of valleys walked through.
+
+function countingValleys(steps, path) {
+    let movement = 0;
+    let valleyCount = 0;
+    for (let i = 0; i < steps; i++) {
+        if (path[i] == 'D') {
+            movement -= 1
+        } else {
+            movement += 1
+        }
+        console.log(movement)
+        if (movement === 0 && path[i] === 'U') {
+            valleyCount += 1;
+        }
+    }
+    return valleyCount
+}
