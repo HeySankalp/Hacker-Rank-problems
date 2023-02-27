@@ -34,3 +34,33 @@ function formingMagicSquare(s) {
     }
     return cost;
 }
+
+
+
+// Q:- Given an array of integers, find the longest subarray where the absolute difference between any two elements is less than or equal to 1.
+
+function pickingNumbers(a) {
+    let sortedArray = a.sort((a, b) => a - b);
+    let subArrayLengths = [];
+    let subCount = 0
+    let base = sortedArray[0];
+    for (let i = 0; i < sortedArray.length; i++) {
+        if (Math.abs(base - sortedArray[i]) === 0 || Math.abs(base - sortedArray[i]) === 1) {
+            subCount += 1;
+        } else {
+            subArrayLengths.push(subCount);
+            if (Math.abs(base - sortedArray[i]) > 1) {
+                base = sortedArray[i]
+                subCount = 1;
+            } else {
+                base = sortedArray[i - 1];
+                subCount = 1 + sortedArray.filter((ele) => ele === base).length;
+            }
+        }
+    }
+    if (subArrayLengths.length === 0) {
+        return a.length;
+    } else {
+        return Math.max(...subArrayLengths);
+    }
+}
